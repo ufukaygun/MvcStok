@@ -20,5 +20,24 @@ namespace MvcStok.Controllers
             var degerler = db.TBL_KATEGORI.ToList();
             return View(degerler);
         }
+
+        //KAtegori Ekleme işlemi
+        //butona basana kadar ekleme işlemi gerçekleştirme yapmamız gerekir.Yoksa her sayfa açıldığında actionresult null veri 
+        //ekler. Bunun için HttpGet ve HttpPost kullanılır.
+
+        [HttpGet]//Hergangibir işlem yapılmazsa sayfayı döndür bana veri yükleme.
+        public ActionResult YeniKategori() 
+        {
+            return View();
+        }
+
+        [HttpPost] //kaydet butonuna basıldığı zaman buradaki işlemi gerçekleştir.
+        public ActionResult YeniKategori(TBL_KATEGORI p1) 
+        {
+            db.TBL_KATEGORI.Add(p1);
+            db.SaveChanges();
+            return View();
+        }
+        
     }
 }

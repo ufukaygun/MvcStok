@@ -23,5 +23,17 @@ namespace MvcStok.Controllers
             var degerler = db.TBL_MUSTERILER.ToList();
             return View(degerler);
         }
+        [HttpGet]
+        public ActionResult YeniMusteri() 
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult YeniMusteri(TBL_MUSTERILER p1)
+        {
+            db.TBL_MUSTERILER.Add(p1);
+            db.SaveChanges();
+            return View();
+        }
     }
 }
