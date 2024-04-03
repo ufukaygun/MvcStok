@@ -23,6 +23,9 @@ namespace MvcStok.Controllers
             var degerler = db.TBL_MUSTERILER.ToList();
             return View(degerler);
         }
+        //musteri Ekleme işlemi
+        //butona basana kadar ekleme işlemi gerçekleştirme yapmamız gerekir.Yoksa her sayfa açıldığında actionresult null veri 
+        //ekler. Bunun için HttpGet ve HttpPost kullanılır.
         [HttpGet]
         public ActionResult YeniMusteri() 
         {
