@@ -38,6 +38,16 @@ namespace MvcStok.Controllers
             db.SaveChanges();
             return View();
         }
+        public ActionResult SIL(int id)
+        {
+            //Find = istenilen değere göre bul
+            var kategori = db.TBL_KATEGORI.Find(id);
+            db.TBL_KATEGORI.Remove(kategori);  
+            //SaveChanges = Değişiklikleri kaydet
+            db.SaveChanges();
+            //RedirectToAction = İstenilene beni yönlendir(sayfa olabilir)
+            return RedirectToAction("Index");
+        }
         
     }
 }
