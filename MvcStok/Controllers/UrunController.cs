@@ -55,6 +55,13 @@ namespace MvcStok.Controllers
             // RedirectToAction kaydetme işlemi gerçekleştikten sonra index sayfasına döndürür.
             return RedirectToAction("Index");
         }
-        
+        public ActionResult SIL(int id)
+        {
+            var urun = db.TBL_URUNLER.Find(id);
+            //Remove = istenileni kaldır
+            db.TBL_URUNLER.Remove(urun);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
