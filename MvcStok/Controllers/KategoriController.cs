@@ -48,6 +48,11 @@ namespace MvcStok.Controllers
             //RedirectToAction = İstenilene beni yönlendir(sayfa olabilir)
             return RedirectToAction("Index");
         }
+        public ActionResult KategoriGetir(int id)
+        {
+            var ktgr = db.TBL_KATEGORI.Find(id);
+            return View("KategoriGetir", ktgr);
+        }
         
     }
 }
