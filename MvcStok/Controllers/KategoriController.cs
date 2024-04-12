@@ -34,6 +34,11 @@ namespace MvcStok.Controllers
         [HttpPost] //kaydet butonuna basıldığı zaman buradaki işlemi gerçekleştir.
         public ActionResult YeniKategori(TBL_KATEGORI p1) 
         {
+            if(!ModelState.IsValid) // Doğrulanma işlemi yapılmadıysa
+            {
+                return View("YeniKategori"); //YeniKategori View ini bana geri döndürsün
+
+            }
             db.TBL_KATEGORI.Add(p1);
             db.SaveChanges();
             return View();
