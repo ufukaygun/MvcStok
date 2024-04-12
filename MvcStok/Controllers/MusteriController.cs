@@ -34,6 +34,11 @@ namespace MvcStok.Controllers
         [HttpPost]
         public ActionResult YeniMusteri(TBL_MUSTERILER p1)
         {
+            if (!ModelState.IsValid) // Doğrulanma işlemi yapılmadıysa
+            {
+                return View("YeniMusteri"); //YeniKategori View ini bana geri döndürsün
+
+            }
             db.TBL_MUSTERILER.Add(p1);
             db.SaveChanges();
             return View();
