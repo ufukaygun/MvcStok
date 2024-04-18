@@ -66,6 +66,17 @@ namespace MvcStok.Controllers
         public ActionResult UrunGetir(int id)
         {
             var urun = db.TBL_URUNLER.Find(id);
+
+            List<SelectListItem> degerler = (from i in db.TBL_KATEGORI.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.KATEGORIAD,
+                                                 Value = i.KATEGORIID.ToString()
+                                             }
+                                            ).ToList();
+            ViewBag.dgr = degerler; // ViewBag controller tarafındaki ifadeyi diğer sayfaya taşıyacak. ViewBag herhangi bir nesne
+                                    // türeterek  diğer sayfada bu nesneyi kullanacağız.
+
             return View("UrunGetir", urun);
         }
     }
