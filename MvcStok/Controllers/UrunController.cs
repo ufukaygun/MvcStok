@@ -79,5 +79,16 @@ namespace MvcStok.Controllers
 
             return View("UrunGetir", urun);
         }
+        public ActionResult Guncelle(TBL_URUNLER p)
+        {
+            var urun = db.TBL_URUNLER.Find(p.URUNID);
+            urun.URUNAD = p.URUNAD;
+            urun.MARKA = p.MARKA;
+            urun.STOK = p.STOK;
+            // urun.URUNKATEGORI = p.URUNKATEGORI;
+            urun.FIYAT = p.FIYAT;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
