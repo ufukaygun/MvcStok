@@ -85,8 +85,12 @@ namespace MvcStok.Controllers
             urun.URUNAD = p.URUNAD;
             urun.MARKA = p.MARKA;
             urun.STOK = p.STOK;
-            // urun.URUNKATEGORI = p.URUNKATEGORI;
             urun.FIYAT = p.FIYAT;
+            // urun.URUNKATEGORI = p.URUNKATEGORI;
+            //LINQ sorgusu
+            var ktg = db.TBL_KATEGORI.Where(m => m.KATEGORIID == p.TBL_KATEGORI.KATEGORIID).FirstOrDefault();
+            urun.URUNKATEGORI = ktg.KATEGORIID;
+           
             db.SaveChanges();
             return RedirectToAction("Index");
         }
