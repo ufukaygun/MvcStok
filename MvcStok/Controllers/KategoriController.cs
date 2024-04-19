@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcStok.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcStok.Controllers
 {
@@ -14,10 +16,12 @@ namespace MvcStok.Controllers
         // MvcDbStokEntities ise modelimi tutuyor.Modelimin içerisinde ise tablolarım var. Tablolar ulaşmak için db nesnesine
         // ihtiyaç var.
         MvcDbStokEntities db = new MvcDbStokEntities();
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)
         {
+            //PagedList paketi kuruldu
             // ToList ile değerlerimi listemiş oldum.
-            var degerler = db.TBL_KATEGORI.ToList();
+            //var degerler = db.TBL_KATEGORI.ToList();
+            var degerler = db.TBL_KATEGORI.ToList().ToPagedList(sayfa, 4);
             return View(degerler);
         }
 
