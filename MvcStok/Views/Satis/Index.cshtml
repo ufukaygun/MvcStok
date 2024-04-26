@@ -1,4 +1,4 @@
-﻿
+﻿@model MvcStok.Models.Entity.TBL_SATISLAR
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -6,7 +6,7 @@
 
 <!-- -->
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1"> 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
     Satış Yap
 </button>
 <div class="modal" id="Modal1">
@@ -14,30 +14,30 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title">Satış Yapma Ekranı</h2>
-            </div> 
-            <form>
+            </div>
+            <form method="post" action="/Satis/YeniSatis">
                 <div class="modal-body">
                     <label>
                         Ürün Adı
                     </label>
-                    <input type="text" name="Urun" class="form-control" />
-                    <br />
-                    <label>
-                        Ürün Markası
-                    </label>
-                    <input type="text" name="marka" class="form-control" />
+                    @Html.TextBoxFor(m => m.URUN, new { @class = "form-control" })
                     <br />
                     <label>
                         Müşteri Adı Soyadı
                     </label>
-                    <input type="text" name="musteri" class="form-control" />
+                    @Html.TextBoxFor(m => m.MUSTERI, new { @class = "form-control" })
                     <br />
                     <label>
-                        Müşteri Telefonu
+                        Adet
                     </label>
-                    <input type="text" name="telefon" class="form-control" />
+                    @Html.TextBoxFor(m => m.ADET, new { @class = "form-control" })
                     <br />
-                    <button class="btn btn-info">Verileri Kaydet</button>
+                    <label>
+                        Fiyat
+                    </label>
+                    @Html.TextBoxFor(m => m.FIYAT, new { @class = "form-control" })
+                    <br />
+                    <button class="btn btn-info">Satış İşlemini Yap</button>
                 </div>
             </form>
         </div>
