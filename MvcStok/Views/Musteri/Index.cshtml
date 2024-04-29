@@ -4,6 +4,17 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
+<!--Search kısmı yapıldı-->
+
+@using (Html.BeginForm("Index", "Musteri", FormMethod.Get))
+{
+    <p>
+       <b> Aranacak Müşteri Adı: </b> @Html.TextBox("p")
+    <input type="submit" value="Ara" />
+</p>
+}
+
+
 <!--Müşteri Listeleme işlemi-->
 
 <table class="table table-bordered">
@@ -27,11 +38,10 @@
                 <td><a href="/MUSTERI/SIL/@mus.MUSTERIID" class="btn btn-danger">SİL</a></td>
                 <td><a href="/MUSTERI/MusteriGetir/@mus.MUSTERIID" class="btn btn-success">GÜNCELLE</a></td>
                 <!--Alert işlemi-->
-                <td>@Html.ActionLink("SİL BUTONU", "SIL", new { id=mus.MUSTERIID }, new { @class = "btn btn-warning", onclick = "return confirm('Silmek istediğinize emin misiniz?')" })</td>
+                <td>@Html.ActionLink("SİL BUTONU", "SIL", new { id = mus.MUSTERIID }, new { @class = "btn btn-warning", onclick = "return confirm('Silmek istediğinize emin misiniz?')" })</td>
             </tr>
         }
     </tbody>
 </table>
 <a href="/Musteri/YeniMusteri/" class="btn btn-primary">YENİ MÜSTERİ EKLE</a>
 
- 

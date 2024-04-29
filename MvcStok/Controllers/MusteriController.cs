@@ -17,11 +17,19 @@ namespace MvcStok.Controllers
         MvcDbStokEntities db = new MvcDbStokEntities();
 
         //index sağ tuş yeni bir view ekliyoruz.
-        public ActionResult Index()
+        //Search için yazıldı.
+        public ActionResult Index(string p)
         {
+            var degerler = from d in db.TBL_MUSTERILER select d;
+            if (!string.IsNullOrEmpty(p))
+            {   
+                //LINQ sorgusu yazıldı
+                degerler = degerler.Where(m => m.MUSTERIAD.Contains(p));
+            }
+            return View(degerler.ToList());  
 
-            var degerler = db.TBL_MUSTERILER.ToList();
-            return View(degerler);
+            //var degerler = db.TBL_MUSTERILER.ToList();
+            //return View(degerler);
         }
         //musteri Ekleme işlemi
         //butona basana kadar ekleme işlemi gerçekleştirme yapmamız gerekir.Yoksa her sayfa açıldığında actionresult null veri 
